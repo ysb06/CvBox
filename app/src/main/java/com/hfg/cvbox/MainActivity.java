@@ -22,7 +22,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 
 enum Mode {
-    None(0), Gray(1), GrayReverse(2), ColorReverse(3);
+    None(0), Gray(1), GrayReverse(2), ColorReverse(3), Brighten(4), Normalize(5);
 
     public int value;
     Mode(int value) {
@@ -146,6 +146,12 @@ public class MainActivity extends AppCompatActivity
             case R.id.button5:
                 currentMode = Mode.ColorReverse;
                 break;
+            case R.id.button6:
+                currentMode = Mode.Brighten;
+                break;
+            case R.id.button7:
+                currentMode = Mode.Normalize;
+                break;
         }
     }
 
@@ -174,13 +180,7 @@ public class MainActivity extends AppCompatActivity
         //Calc FPS
         frameCount++;
         if(System.currentTimeMillis() - prevTime > 1000) {
-            //Log.i("OpenCV", "FPS: " + frameCount + ", Current: " + currentMode.getValue());
-            fpsText.post(new Runnable() {
-                @Override
-                public void run() {
-                    fpsText.setText("FPS: " + frameCount);
-                }
-            });
+            Log.i("OpenCV", "FPS: " + frameCount + ", Current: " + currentMode.getValue());
             prevTime = System.currentTimeMillis();
             frameCount = 0;
         }
