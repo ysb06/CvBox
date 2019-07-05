@@ -22,7 +22,7 @@ import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Mat;
 
 enum Mode {
-    None(0), Gray(1), GrayReverse(2), ColorReverse(3), Brighten(4), Normalize(5);
+    None(0), Gray(1), GrayReverse(2), ColorReverse(3), Brighten(4), Normalize(5), HandDetect(6);
 
     public int value;
     Mode(int value) {
@@ -151,6 +151,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.button7:
                 currentMode = Mode.Normalize;
+                break;
+            case R.id.button8:
+                currentMode = Mode.HandDetect;
                 break;
         }
     }
